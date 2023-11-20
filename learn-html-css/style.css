@@ -1,0 +1,260 @@
+/* color : value
+name: red, blue,green
+hexa: #ffa400, #ff3433, #666666 -> #666, #ffffff-> #fff
+rgb: rgb(0,0,0) , rgb(255,255,255)
+rgba:(0,0,0,0.5) trong đó 0.5 là anpha : opacity:0 -> 1
+
+
+*/
+:root {
+    --background-primary: #00aefd;
+    --background-secondary: #ffa400;
+
+}
+
+html {
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.backgrounds {
+    display: flex;
+    margin: 0 2rem;
+}
+
+.background-show-image {
+    width: 300px;
+    height: 300px;
+    /* background-image: url("./img/abc.jpg");
+    background-position: center ; 
+    background-repeat: no-repeat;
+    background-size: cover; */
+    /* background position : định vị trí cho ảnh hiển thị
+    background repeat giúp cho các ảnh có kich thước nhỏ không bị lặp lại;
+    background-size 
+      */
+    background: url("./img/abc.jpg") no-repeat center / cover;
+    margin-right: 5rem;
+}
+
+.background-gradian {
+    width: 300px;
+    height: 300px;
+    background-image: linear-gradient(to right, rgba(53, 85, 100, 0.678), rgba(187, 145, 67, 0.253)), url("./img/abc.jpg");
+    background-size: cover;
+}
+
+.gradian-text {
+    font-weight: bold;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    display: inline-block;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.box-test-border {
+    display: flex;
+}
+
+.border {
+    width: 100px;
+    height: 100px;
+    border: 2px solid red;
+    border-radius: 50%;
+    margin-bottom: 70px;
+}
+
+.marging {
+    border: 2px solid blue;
+    width: 100px;
+    height: 100px;
+    margin: 30px;
+    padding: 10px;
+    /* margin collaps : nếu phần tử trên dùng margin-bottom: 70px và phần tử dưới dùng margin-top: 50px thì nó sẽ nhận cái margin có px lớn nhất */
+}
+
+.boxed {
+    width: 10rem;
+    height: 10rem;
+    border: 5px solid black;
+    padding: 1rem;
+    margin: 2rem;
+}
+
+/*  trường hợp trình duyệt không hỗ trợ thuộc tính  -webkit-background-clip chẳng hạn*/
+@supports not(-webkit-background-clip: text) {
+    .gradian-text {
+        font-weight: bold;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        display: inline-block;
+        color: var(--primary-color);
+    }
+}
+
+.child-select {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.child-select ui {
+    display: flex;
+    justify-content: space-between
+}
+
+.child-select ui {
+    list-style: none;
+}
+
+/* note : nên dùng first-child , nth-of-type nếu phần tử cố định và không thêm phần tử nào vào trong phân tử cha khác với các phần tử còn lại   */
+/* .child-select  li:first-child {
+    color: red;
+}
+.child-select  li:nth-child(2) {
+    color: blue;
+}
+.child-select  li:nth-child(3) {
+    color: chocolate;
+}
+.child-select  li:nth-child(4) {
+    color: green;
+}
+.child-select li:last-child {
+    color: var(--background-primary);
+}
+.child-select li:nth-last-child(1) {
+    color: var(--background-secondary);
+
+} */
+/* nên dùng first of type vì bạn có thêm phần tử nào khác vào phần tử của cha thì doạn css cũng k bị thay đổi */
+/* 
+li:first-child vs li:first-of-type thì cách hoạt động là giống nhau 
+nó chỉ khác khi phàn tử cha đột nhiên thêm 1 thẻ khác với những thẻ còn 
+lại thì child lại bị lỗi css vì lúc đó thẻ li đầu tiên k còn là phần tử con thứ nhất 
+*/
+
+.child-select li:first-of-type {
+    color: red;
+}
+
+.child-select li:nth-of-type(2) {
+    color: blue;
+}
+
+.child-select li:nth-of-type(3) {
+    color: chocolate;
+}
+
+.child-select li:nth-of-type(4) {
+    color: green;
+}
+
+.child-select li:last-of-type {
+    color: var(--background-primary);
+}
+
+.child-select li:nth-last-of-type(1) {
+    color: var(--background-secondary);
+
+}
+
+.combinators {
+    display: flex;
+    justify-content: space-between;
+    font-size: 3rem;
+    font-weight: bold;
+    padding-top: 2rem;
+}
+
+.combinators h3+.title {
+    color: var(--background-primary);
+}
+
+.combinators h3~.title2 {
+    color: var(--background-secondary);
+}
+
+.css-selector {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-top: 2rem;
+}
+
+.css-selector p::first-letter {
+    font-size: 3rem;
+    color: var(--background-primary);
+}
+
+.css-selector p::first-line {
+    color: var(--background-secondary);
+}
+
+/* ^= là bắt đầu */
+.css-selector a[href^="https"] {
+    color: green;
+}
+
+/* *= là có chứa */
+.css-selector a[href*="ww"] {
+    color: red;
+}
+
+/* $= là kết thúc */
+.css-selector a[href$="vn"] {
+    color: gold;
+}
+
+/*  chú ý khi làm việc với transition thì thẻ đó chưa thuộc tính display: none , visiable : hidden sẽ không dùng được transition */
+/* transition: property timer 
+linear: chậm đều ;
+easing : nhanh đều
+transition: background-color 0.2s linear, color 0.2s linear
+
+*/
+.shape {
+    display: flex;
+    justify-content: space-around;
+}
+
+.transition {
+    width: 10rem;
+    height: 10rem;
+    background-color: var(--background-secondary);
+    transition: all 0.2s;
+}
+
+.transition:hover {
+    background-color: #00aefd;
+}
+
+.text-lorem {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* 
+x: là ngang
+y: là dọc 
+z: là tọa độ mặt phẳng xOy nên nó sẽ xoay theo mặt phẳng
+nếu hệ số truyền vào là dương thì dịch chuyển về bên phải so với mép ngoài bên phải của khối
+nếu hệ số là âm thì ngược lại 
+ */
+.transform {
+    width: 10rem;
+    height: 10rem;
+    background-color: var(--background-primary);
+    /* transform: scaleX(2) scaleY(2); scale là kéo ra */
+    /* transform: scale(0.5, 0.5); scale về 0.5 là thu về 1 nửa */
+    /* transform: rotate(-45deg); rotate là lật bao nhiêu độ */
+    /* transform: rotateZ(30deg); */
+    /* transform: translateX(30px) translateY(30px)  di chuyển phần tử cách vị trí gốc bao nhiêu px và nằm đè lên phần tử khác chứ không đẩy xuống phần tử dưới */
+    /* transform: translateX(50%) translateY(50%) == translate(50%); di chuyển ra giữ so với phần tử ban đầu*/
+    /* transform: translate(100%); di chuyển về 1 bên với khoảng cách bằng phần tử ban đầu  */
+
+}
