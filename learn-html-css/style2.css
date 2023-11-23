@@ -1,0 +1,287 @@
+.wrap {
+    width: 100%;
+    height: 350px;
+    background-color: black;
+    position: relative;
+    /* left: 10px;
+    top: 30px; 
+
+    right: 10px;
+    bottom: 30px; */
+}
+
+.boxed-position {
+    width: 10rem;
+    height: 10rem;
+    background-color: var(--background-primary);
+    position: absolute;
+    /* nằm về phía trêm bên trái */
+    /* top: 0;
+    left: 0; */
+
+    /* nằm về phía dưới bên trái */
+    /* bottom: 0;
+    left: 0; */
+
+    /* nằm về phía trên bên phải */
+    /* top: 0;
+    right: 0; */
+
+    /* nằm về phía dưới bên phải */
+    /* bottom: 0;
+    right: 0; */
+
+    /* nằm ở giữa về các bên ( nghĩa là tìm ra điểm năm giữa xong điểm bắt đầu của phần tử boxed sẽ được đặt ở đây */
+    /* top: 0;
+    bottom: 0;
+    left: 50%; */
+
+    /* nằm ở giữa về bên trái  */
+    /* top: 0;
+    left: 50%;
+    transform: translateX(-50%); */
+
+    /* nằm ở giữa về các bên ( nghĩa là tìm ra điểm năm giữa xong điểm bắt đầu của phần tử boxed sẽ được đặt ở đây */
+    /* top: 50%;
+    left: 50%; */
+    /* transform: translate(-50%, -50%); */
+
+    /*  kết luận để căn giữa bạn nên ta nên dùng top: 50% và left:50% +  transform: translate(-50%, -50%) */
+
+    /* position fixed */
+    /* position: fixed; */
+}
+
+.bar {
+    width: 30rem;
+    height: 1rem;
+    background-color: rgb(160, 158, 154);
+    margin: 20px auto;
+    position: relative;
+    border-radius: 1rem;
+}
+
+.process {
+    width: 50%;
+    height: 100%;
+    background-color: green;
+    /* inherit kế thừa của thằng cha */
+    border-radius: inherit;
+
+}
+
+.process-dot {
+    width: 2rem;
+    height: 2rem;
+    background-color: green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.pseudo {
+    position: relative;
+    padding-left: 20px;
+    font-size: 3rem;
+}
+
+.pseudo:before {
+    content: "";
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.line {
+    text-align: center;
+    position: relative;
+}
+
+.line:after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: goldenrod;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.line-text {
+    font-size: 2rem;
+    padding: 10px;
+    background-color: #fff;
+    position: relative;
+    z-index: 3;
+}
+
+.boxed-icon {
+    width: 5rem;
+    height: 5rem;
+    color: var(--background-primary);
+    margin: 1rem auto;
+    position: relative;
+    border-radius: 4px;
+}
+
+/* dưới đây là cách để tạo màu nền giống với màu chữ của phần tử chứa nó  */
+.boxed-icon:after {
+    content: "";
+    border-radius: inherit;
+    background-color: currentColor;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+
+}
+
+.icon-user {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box-effect {
+    margin: auto;
+    text-align: center;
+}
+
+/* inline-block or block nên dùng khi muốn các thuộc tính có thể sử dụng các pseudo . Vì nếu bạn tạo thẻ block thì nó chiếm hết khoảng trống còn dùng inline thì nó chỉ chiếm thành phần nó đang đứng thôi  */
+.effect {
+    text-decoration: none;
+    /* nên cho các thẻ sang inline-block or block để tránh trong trường hợp này nó không nhận được background của pseudo */
+    display: inline-block;
+    padding: 1rem;
+    font-size: 2rem;
+    border: 1px solid var(--background-primary);
+    background-color: #fff;
+    position: relative;
+    /*  transition: color 0.25s linear; chạy theo thuộc tính color */
+
+    transition: color 0.25s linear;
+    z-index: 1;
+}
+
+.effect:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--background-primary);
+    /*  transition: width 0.25s linear; chạy theo thuộc tính width */
+    transition: width 0.25s linear;
+    z-index: -1;
+}
+
+.effect:hover {
+    color: #fff;
+}
+
+.effect:hover:before {
+    width: 100%;
+}
+
+.annimation {
+    width: 5rem;
+    height: 5rem;
+    background-color: red;
+    /*  */
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    /* animation-name: move; tên animation  */
+    /* animation-duration: 2s; thời gian chạy animation  */
+    /* animation-direction: alternate; hướng chạy của animation  */
+    /* animation-iteration-count: infinite; số lần lặp  của animation  */
+    /* animation-timing-function: cubic-bezier(anpha); hiệu ứng chuyển động của vật thể */
+    /* animation-name: move;
+    animation-duration: 2s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function:cubic-bezier(0.6, 0.04, 0.98, 0.335); */
+    /* animation-fill-mode:forwards; */
+    animation: move 2s alternate infinite cubic-bezier(0.6, 0.04, 0.98, 0.335);
+}
+
+@keyframes move {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(50rem);
+    }
+}
+
+.loading {
+    width: 5rem;
+    height: 5rem;
+    margin: 2rem;
+    background-color: palevioletred;
+    border-radius: 50%;
+    position: relative;
+}
+
+.loading:after {
+    content: "";
+    border-radius: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    animation: fade 2s forwards infinite linear;
+}
+
+@keyframes fade {
+    /* from {
+        transform: scale(1);
+    } */
+
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.loading-circle {
+    display: inline-block;
+    animation: circle-rotate 2s infinite;
+}
+
+
+.circle-item {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid var(--background-primary);
+    border-radius: 50%;
+    margin: 0 0.5rem;
+
+}
+
+
+@keyframes circle-rotate {
+    50% {
+        transform: rotate(200deg);
+    }
+    75% {
+        transform: rotate(170deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
